@@ -2,7 +2,7 @@ import AddToCart from "./AddToCart";
 
 const ProductCart = () => {
   return (
-    <div>
+    <div >
       <AddToCart />
     </div>
   );
