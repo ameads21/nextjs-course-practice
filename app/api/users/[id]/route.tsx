@@ -8,7 +8,7 @@ export async function GET(
 ) {
   const user = await prisma.user.findUnique({
     where: {
-      id: parseInt(params.id),
+      id: params.id,
     },
   });
   if (!user) {
@@ -28,7 +28,7 @@ export async function PUT(
     return NextResponse.json(validation.error.errors, { status: 400 });
 
   const user = await prisma.user.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   });
   if (!user)
     return NextResponse.json({ error: "User not found" }, { status: 404 });
@@ -51,7 +51,7 @@ export async function DELETE(
 ) {
   // There's a bug currently where if there's a body in the request, it'll throw an error "Response body object should not be disturbed or locked"
   const user = await prisma.user.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   });
   if (!user)
     return NextResponse.json({ error: "User not found" }, { status: 404 });
